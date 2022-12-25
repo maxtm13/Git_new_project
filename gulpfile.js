@@ -11,6 +11,7 @@ const imagemin = require('gulp-imagemin')
 const htmlmin = require('gulp-htmlmin');
 const size = require('gulp-size');
 const newer = require('gulp-newer');
+const browsersync = require('browser-sync').create();
 const autoprefixer = require('gulp-autoprefixer');
 
 const paths= {
@@ -40,8 +41,8 @@ function html() {
       showFiles: true,
       pretty: true
     }))
-    .pipe(gulp.dest(paths.html.dest));
-  
+    .pipe(gulp.dest(paths.html.dest))
+     .pipe(browsersync.stream())
 }
 
 function img() {
@@ -81,6 +82,7 @@ function styles() {
       pretty: true
     }))
   .pipe(gulp.dest(paths.styles.dest))
+  .pipe(browsersync.stream())
 }
 //Задача для обработки скриптов
 function scripts() {
@@ -97,13 +99,21 @@ function scripts() {
     pretty: true
   }))
   .pipe(gulp.dest(paths.scripts.dest))
+  .pipe(browsersync.stream())
 }
 
 
 function watch() {
+  browsersync.init({
+    server: {
+      baseDir: "./dist/"
+    }
+  });
   gulp.watch(paths.styles.src, styles)
   gulp.watch(paths.scripts.src, scripts)
-  gulp.watch(paths.html.src, html)
+  gulp.watch(paths.html.dest).on('change', browsersync.reload)
+  gulp.watch(paths.styles.dest).on('change', browsersync.reload)
+  gulp.watch(paths.scripts.dest).on('change', browsersync.reload)
   gulp.watch(paths.images.src, img)
 
 }
