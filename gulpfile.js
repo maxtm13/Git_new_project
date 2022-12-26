@@ -21,7 +21,8 @@ const paths= {
   },
   styles:{
     src: 'src/styles/**/*.less',
-    dest: 'dist/css'
+    dest: 'dist/css',
+    dest2: 'src/styles/css'
   },
   scripts:{
     src: 'src/scripts/**/*.js',
@@ -85,6 +86,13 @@ function styles() {
   .pipe(gulp.dest(paths.styles.dest))
   .pipe(browsersync.stream())
 }
+
+function styles2() {
+  return gulp.src(paths.styles.src)
+  .pipe(less())
+  .pipe(gulp.dest(paths.styles.dest2))
+
+}
 //Задача для обработки скриптов
 function scripts() {
   return gulp.src(paths.scripts.src)
@@ -112,6 +120,7 @@ function watch() {
   });
   gulp.watch(paths.styles.src, styles)
   gulp.watch(paths.scripts.src, scripts)
+  gulp.watch(paths.styles.src, styles2)
   gulp.watch(paths.html.src, html)
   gulp.watch(paths.images.src, img)
   //Синхронизация с браузером
@@ -122,12 +131,13 @@ function watch() {
 }
 
 
-const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch)
+const build = gulp.series(clean, html, gulp.parallel(styles, styles2, scripts, img), watch)
 
 exports.html =  html
 exports.clean = clean
 exports.img = img
 exports.styles = styles
+exports.styles2 = styles2
 exports.watch = watch
 exports.scripts= scripts
 exports.build = build
