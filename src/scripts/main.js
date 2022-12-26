@@ -5,5 +5,5 @@ class people{
 }
 let b = new people()
 b.sayhi()
-let a = 'Hello'
+let a = 'Hello Hello'
 console.log(a)

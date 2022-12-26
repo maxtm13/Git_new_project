@@ -33,7 +33,7 @@ const paths= {
   }
 }
 
-
+//Задача для обработки HTML
 function html() {
   return gulp.src(paths.html.src)
     .pipe(htmlmin({ collapseWhitespace: true }))
@@ -45,6 +45,7 @@ function html() {
     .pipe(browsersync.stream())
 }
 
+//Задача для обработки изображений
 function img() {
   return gulp.src(paths.images.src)
     .pipe(newer(paths.images.dest))
@@ -61,7 +62,7 @@ function img() {
 function clean() {
   return del(['dist/*', '!dist/img'])
 }
-
+//Задача для обработки стилец
 function styles() {
   return gulp.src(paths.styles.src)
   .pipe(sourcemaps.init())
@@ -77,10 +78,10 @@ function styles() {
     suffix: '.min'
   }))
   .pipe(sourcemaps.write('.'))
-    .pipe(size({
-      showFiles: true,
-      pretty: true
-    }))
+  .pipe(size({
+     showFiles: true,
+     pretty: true
+   }))
   .pipe(gulp.dest(paths.styles.dest))
   .pipe(browsersync.stream())
 }
@@ -109,12 +110,14 @@ function watch() {
       baseDir: "./dist/"
     }
   });
-  //gulp.watch(paths.styles.src, styles)
-  //gulp.watch(paths.scripts.src, scripts)
+  gulp.watch(paths.styles.src, styles)
+  gulp.watch(paths.scripts.src, scripts)
+  gulp.watch(paths.html.src, html)
+  gulp.watch(paths.images.src, img)
+  //Синхронизация с браузером
   gulp.watch(paths.html.dest).on('change', browsersync.reload)
-  //gulp.watch(paths.styles.dest).on('change', browsersync.reload)
-  //gulp.watch(paths.scripts.dest).on('change', browsersync.reload)
-  //gulp.watch(paths.images.src, img)
+  gulp.watch(paths.styles.dest).on('change', browsersync.reload)
+  gulp.watch(paths.scripts.dest).on('change', browsersync.reload)
 
 }
 
