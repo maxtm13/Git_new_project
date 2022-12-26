@@ -42,7 +42,7 @@ function html() {
       pretty: true
     }))
     .pipe(gulp.dest(paths.html.dest))
-     .pipe(browsersync.stream())
+    .pipe(browsersync.stream())
 }
 
 function img() {
@@ -109,12 +109,12 @@ function watch() {
       baseDir: "./dist/"
     }
   });
-  gulp.watch(paths.styles.src, styles)
-  gulp.watch(paths.scripts.src, scripts)
+  //gulp.watch(paths.styles.src, styles)
+  //gulp.watch(paths.scripts.src, scripts)
   gulp.watch(paths.html.dest).on('change', browsersync.reload)
-  gulp.watch(paths.styles.dest).on('change', browsersync.reload)
-  gulp.watch(paths.scripts.dest).on('change', browsersync.reload)
-  gulp.watch(paths.images.src, img)
+  //gulp.watch(paths.styles.dest).on('change', browsersync.reload)
+  //gulp.watch(paths.scripts.dest).on('change', browsersync.reload)
+  //gulp.watch(paths.images.src, img)
 
 }
 
