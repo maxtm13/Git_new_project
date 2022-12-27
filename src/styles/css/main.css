@@ -11,12 +11,13 @@ a {
   text-decoration: none;
   color: inherit;
 }
-h1 {
+h2 {
   font-size: 64px;
   font-family: Playfair Display;
   font-weight: normal;
+  color: inherit;
 }
-h2 {
+h3 {
   font-style: 30px;
   font-family: 'Montserrat', sans-serif;
   font-weight: normal;
@@ -69,6 +70,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  margin-bottom: 80px;
 }
 .container__social_btn {
   width: 250px;
@@ -92,12 +94,53 @@ h2 {
   display: flex;
   justify-content: space-around;
 }
-.svg_vk {
-  transition: all 0.3s ease-in;
+.svg_vk g,
+svg g {
+  transition: all 0.3s;
 }
-.svg_vk:hover g {
-  fill: #0f178a;
-}
+.svg_vk:hover g,
 .svg_tg:hover g {
   fill: #0f178a;
+}
+.ligth {
+  background-color: #f2f2ea;
+  color: #000;
+  padding-bottom: 80px;
+}
+.dark {
+  background-color: #000;
+  color: #fff;
+}
+.second__title {
+  padding-top: 60px;
+  font-weight: 500;
+  font-family: "Playfair Display";
+  font-size: 46px;
+  text-align: center;
+}
+li {
+  font-size: 24px;
+  padding-top: 80px;
+}
+.properties {
+  counter-reset: my-counter;
+  list-style: none;
+  list-style-position: outside;
+  width: 820px;
+  margin: 0 auto;
+}
+.properties_item {
+  counter-increment: my-counter;
+}
+.properties_item:before {
+  content: ' ' counter(my-counter);
+  margin-right: 30px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  padding: 15px 24px;
+  background-color: #4287d6;
+  color: #fff;
+}
+body > section.second > div > div > ul > li:nth-child(1):before {
+  padding: 15px 26px;
 }
