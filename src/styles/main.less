@@ -153,7 +153,7 @@ svg g {
 
 .second__title,
 .third__title,
-.forth__title {
+.forth__title, .fifth__title, .sixth_title {
   padding-top: 60px;
   font-weight: 600;
   font-family: "Playfair Display";
@@ -246,8 +246,7 @@ body>section.second>div>div>ul>li:nth-child(6):after {
 
   .item_title {
     width: 80%;
-    font-family: 'Montserrat',
-      sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 37px;
     font-weight: 400;
 
@@ -298,12 +297,12 @@ body>section.second>div>div>ul>li:nth-child(6):after {
 .item-title{
   font-size: 46px;
   font-weight: 400;
-  font-family: 'Montserrat';
+  font-family: ''Montserrat', sans-serif';
   width: 500px;
   height: 600px;
   position: absolute;
   top: 100px;
-  transition: all 0.8s;
+  transition: all 0.8s ease-in-out;
   opacity: 0;
   left: 30px;
  // margin: auto;
@@ -342,4 +341,52 @@ body>section.second>div>div>ul>li:nth-child(6):after {
 .item-link:hover .item-img{
   scale: 1.05;
   filter: brightness(0.4);
+}
+.fifth__title{
+  margin-bottom: 100px;
+}
+.servises{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  .service-item + .service-item{
+    border-left: 2px solid #686868;
+  }
+  img{
+    margin-bottom: 30px;
+    width: 100px;
+
+  }
+  .service-title{
+    font-family: Playfair Display;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  .service-text{
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .service-item{
+    width: 28%;
+    text-align: center;
+    padding: 0 20px;
+  }
+}
+.sixth_title{
+  margin-bottom: 60px;
+}
+.feedback_items{
+  display: flex;
+  justify-content:space-around;
+  //align-items: center;
+}
+.feedback_img{
+  width: 24%;
+  transition: all .6s;
+  &:hover{
+    scale: 1.05;
+    box-shadow: 0px 0px 27px 9px rgba(34, 60, 80, 0.41);
+    cursor: pointer;
+  }
 }
